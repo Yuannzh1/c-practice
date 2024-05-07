@@ -1,3 +1,4 @@
+//stack可用於DFS
 1. 包含標頭檔
 //在 C++ 中使用 stack 前，你需要包含 <stack> 標頭檔：
 #include <stack>
