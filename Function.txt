@@ -1,0 +1,2 @@
+1.min_element
+//min_element 是 C++ 標準庫 <algorithm> 中的一個函式
