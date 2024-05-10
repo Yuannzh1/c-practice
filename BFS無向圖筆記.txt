@@ -1,19 +1,26 @@
 //1 step
-#define N (number)
+#define MAX_N (number)
 建立節點數、邊數、節點(node)
-建立鄰接矩陣 adj[N][N]={0};
-建立統計距離的陣列 d[N];
+建立鄰接矩陣 vector<int> adj[MAX_N];
+(1)如果是點上有值：建立tempvalue儲存節點值
+(2)如果是邊上有值：建立統計距離的陣列 d[N]
 
 //2 step
-建置 BFS 函式(內包含 bool visited[]={false}, queue<int>)
-逐步推入node進入queue，並將visited[]設置為true(首先推入頂點，並將頂點d[s]=0，visit[s]=true)
+建置 BFS 函式(int n, int value[])
+內包含 bool visited[]={false}, queue<int>
+逐步推入node進入queue，並將visited[]設置為true(首先推入頂點，並將頂點d[n]=0，visit[n]=true)
 依題目建立條件(EX:條件點可到達幾個點，即建立一記錄點int count; 統計總距離，即int total d)
 
 //3 step(主迴圈)
 while(!queue.empty()){
 int v=queue.front();
 queue.pop();
-進入迴圈(從第一個節點找至最後一個節點)
+(2) 
+tempvalue += value[v]; // 將當前節點的值加到 tempvalue 中
+進入迴圈for (int i : adj[v])
+判別!visited[i] 若true則將 visited[i] = true
+q.push(i)
+(1)
 if(adj[v][i]==1 && !visit[i])
 d[i] = d[v]+(1); (若題目是有權重邊就不是+1) ***當要問最短距離，就輸出d[所求點]；
 將visited[i]設置為true
