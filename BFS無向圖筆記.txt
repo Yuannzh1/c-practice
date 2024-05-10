@@ -10,7 +10,7 @@
 
 //3 step(主迴圈)
 while(!queue.empty()){
-int v=queue.top();
+int v=queue.front();
 queue.pop();
 進入迴圈(從第一個節點找至最後一個節點)
 if(adj[v][i]==1 && !visit[i])
