@@ -1,0 +1,26 @@
+//1 step
+建立節點數、邊數、節點(node)
+建立鄰接矩陣 adj[N][N]={0};
+建立統計距離的陣列 d[N];
+
+//2 step
+建置 BFS 函式(內包含 bool visited[]={false}, queue<int>)
+逐步推入node進入queue，並將visited[]設置為true(首先推入頂點，並將頂點d[s]=0，visit[s]=true)
+依題目建立條件(EX:條件點可到達幾個點，即建立一記錄點int count; 統計總距離，即int total d)
+
+//3 step(主迴圈)
+while(!queue.empty()){
+int v=queue.top();
+queue.pop();
+進入迴圈(從第一個節點找至最後一個節點)
+if(adj[v][i]==1 && !visit[i])
+d[i] = d[v]+1;
+將visited[i]設置為true
+Q.push(i);(將i設置為新頂點)
+//補充
+視情況於主迴圈加入題目所求目標的統計
+
+//4 step
+在主迴圈當中輸入鄰接矩陣
+呼叫BFS(n)
+
