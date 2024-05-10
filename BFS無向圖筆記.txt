@@ -1,7 +1,7 @@
 //1 step
 #define MAX_N (number)
 建立節點數、邊數、節點(node)
-建立鄰接矩陣 vector<int> adj[MAX_N];
+建立鄰接矩陣 vector<int> adj[MAX_N] or int adj[MAX_N][MAX_N];
 (1)如果是點上有值：建立tempvalue儲存節點值
 (2)如果是邊上有值：建立統計距離的陣列 d[N]
 
