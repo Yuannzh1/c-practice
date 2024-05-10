@@ -15,12 +15,12 @@
 while(!queue.empty()){
 int v=queue.front();
 queue.pop();
-(2) 
+(1) 
 tempvalue += value[v]; // 將當前節點的值加到 tempvalue 中
 進入迴圈for (int i : adj[v])
 判別!visited[i] 若true則將 visited[i] = true
 q.push(i)
-(1)
+(2)
 if(adj[v][i]==1 && !visit[i])
 d[i] = d[v]+(1); (若題目是有權重邊就不是+1) ***當要問最短距離，就輸出d[所求點]；
 將visited[i]設置為true
