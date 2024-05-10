@@ -1,5 +1,5 @@
 //1 step
-#define N (number)
+### define N (number)
 建立節點數、邊數、節點(node)
 建立鄰接矩陣 adj[N][N]={0};
 建立統計距離的陣列 d[N];
