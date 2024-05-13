@@ -17,3 +17,5 @@ int josephus(int n, int k) {
     res += res / (k - 1);  // 還原位置
   return res;
 }
+//公式推導
+https://blog.csdn.net/u011500062/article/details/72855826
