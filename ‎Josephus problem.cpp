@@ -19,3 +19,55 @@ int josephus(int n, int k) {
 }
 //公式推導
 https://blog.csdn.net/u011500062/article/details/72855826
+
+//c296
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long LL;
+#define R 1000000
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    
+    LL n, m ,k;
+    //n 個人
+    //m 爆炸
+    //k 次
+    cin>>n>>m>>k;
+    LL bomb=0;
+    vector<bool> v(n+1, true);
+     //alive
+    for(LL i=0; i<k; i++){
+    	LL count=0;
+    	LL countstep=0;
+    	while(countstep!=m){
+    		count++;
+    		LL pos = (bomb+count) % n;
+    		if(pos==0) pos=n;
+    		if(v[pos]){
+    			countstep++;
+    			if(countstep==m){
+    				bomb = pos;
+    				v[pos] = false;
+    				break;
+    			} 
+    		}
+    		else{
+    			continue;
+    		}
+    	}
+    }
+    for(LL i=1; i<=n; i++){
+    	LL pos = (bomb+i) % n;
+    	if(pos==0) pos=n;
+		if(v[pos]){
+			cout<<pos<<endl;
+			break;
+		} 
+	}
+	
+	return 0;
+
+}
