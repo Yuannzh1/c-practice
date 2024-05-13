@@ -18,6 +18,9 @@ void bfs_shortest_path(vector<vector<int>>& graph, int n, int j) {
         q.pop();
         for (int i = 0; i < n; i++) { 
             if (graph[node][i] == 1 && distance[i] == -1) { // 如果鄰居節點尚未被訪問過
+                //graph[node][i]=0
+                //graph[i][node]=0
+                //不太確定為啥不用歸0
                 distance[i] = distance[node] + 1; // 更新最短路徑長度
                 q.push(i);
             }
