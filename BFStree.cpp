@@ -18,7 +18,7 @@ void bfs_shortest_path(vector<vector<int>>& graph, int start) {
         int node = q.front();
         q.pop();
 
-        for (size_t i = 0; i < graph[node].size(); i++) { // 修改這行，將 i 的類型改為 size_t
+        for (size_t i = 0; i < graph[node].size(); i++) { 
             int neighbor = graph[node][i]; // 取得鄰居節點
             if (distance[neighbor] == INT_MAX) { // 如果鄰居節點尚未被訪問過
                 distance[neighbor] = distance[node] + 1; // 更新最短路徑長度
