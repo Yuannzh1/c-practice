@@ -1,41 +1,57 @@
-//1 step
-#define MAX_N (number)
-建立節點數、邊數、節點(node)
-建立鄰接矩陣 vector<int> adj[MAX_N] or int adj[MAX_N][MAX_N];
-(1)如果是點上有值：建立tempvalue儲存節點值
-(2)如果是邊上有值：建立統計距離的陣列 d[N]
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
 
-//2 step
-建置 BFS 函式(int n, int value[])
-內包含 bool visited[]={false}, queue<int>
-逐步推入node進入queue，並將visited[]設置為true(首先推入頂點，並將頂點d[n]=0，visit[n]=true)
-依題目建立條件(EX:條件點可到達幾個點，即建立一記錄點int count; 統計總距離，即int total d)
+#define MAX_N 1000
 
-//3 step(主迴圈)
-while(!queue.empty()){
-int v=queue.front();
-queue.pop();
-(1) 
-tempvalue += value[v]; // 將當前節點的值加到 tempvalue 中
-進入迴圈for (int i : adj[v])
-判別!visited[i] 若true則將 visited[i] = true
-q.push(i)
-(2)
-if(adj[v][i]==1 && !visit[i])
-d[i] = d[v]+(1); (若題目是有權重邊就不是+1) ***當要問最短距離，就輸出d[所求點]；
-將visited[i]設置為true
-Q.push(i);(將i設置為新頂點)
-//補充
-視情況於主迴圈加入題目所求目標的統計
-EX：輸出條件是有相連輸出距離，無則輸出NO
-只要有相連，d[i]都會有值
+vector<int> adj[MAX_N]; // 相鄰串列
+bool visited[MAX_N] = {false}; // 初始化 visited，所有節點都尚未被訪問
+int value[MAX_N]; // 每個節點的值
 
-//4 step
-在主迴圈當中輸入鄰接矩陣
-呼叫BFS(n)
-for (int i = 0; i < m; i++) {
+int BFS_with_node_value(int start) {
+    queue<int> q; // 創建一個 queue 用來存儲待處理的節點
+    q.push(start); // 將起始節點 start 推入 queue
+    visited[start] = true; // 將起始節點設為已訪問
+    int total_value = 0; // 初始化節點值的總和為 0
+
+    while (!q.empty()) {
+        int v = q.front();
+        q.pop();
+        // 將當前節點的值加到總和中
+        total_value += value[v];
+        // 遍歷與當前節點相鄰的節點
+        for (int i : adj[v]) {
+            if (!visited[i]) {
+                visited[i] = true; // 標記節點 i 已訪問
+                q.push(i); // 將 i 設置為新頂點
+            }
+        }
+    }
+    return total_value;
+}
+
+int main() {
+    // 假設有 m 條邊
+    int m;
+    cin >> m;
+    for (int i = 0; i < m; i++) {
         int v, w;
         cin >> v >> w;
         adj[v].push_back(w); // 將邊加入相鄰串列
         adj[w].push_back(v); // 若圖是無向圖，需將兩個方向都加入
+    }
+
+    // 假設每個節點的值分別為 1、2、3、4、5
+    for (int i = 1; i <= 5; i++) {
+        cin >> value[i];
+    }
+
+    // 假設起始節點是 1
+    int start_node = 1;
+
+    int total_node_value = BFS_with_node_value(start_node); // 執行 BFS，計算節點值的總和
+    cout << "Total value of nodes visited: " << total_node_value << endl;
+
+    return 0;
 }
