@@ -123,6 +123,94 @@ int area = rect.area(); // area 為 50
 ios_base::sync_with_stdio(0);
 cin.tie(0);
 
+Floyd-Warshall
 
+先建立二維graph陣列 
+vector<vector<int>> adj(N, vector<int>(N, INF));
+輸入相鄰的數組，再建立三層迴圈
+if(i==j || i==k || j==k) continue; //重要判斷式
+當graph[i][j]>graph[i][k]+graph[k][j]就進行更新
 
+Kadane
 
+int kadaneAlgorithm(vector<int>& nums)
+初設maxsum和currentsum為nums[0]
+// 從第二個元素開始遍歷
+for (int i = 1; i < nums.size(); ++i)
+// 更新當前子數組的和，如果加上這個元素會使得和增大，否則重新開始計算
+currentSum = max(nums[i], currentSum + nums[i]);
+// 更新全局最大和
+maxSum = max(maxSum, currentSum);
+最後return maxSum;
+
+Josephus problem
+
+int josephus(int n, int k) {
+  int res = 0;
+  for (int i = 1; i <= n; ++i) res = (res + k) % i;
+  return res;
+}
+
+BFS-maze
+// 定義迷宮的大小 #define
+// 利用struct(x,y,dist)定義節點結構
+// 定義四個可能的移動方向
+bool isValid(int x, int y, vector<vector<int>>& maze) //檢查節點
+int BFS(vector<vector<int>>& maze, int startX, int startY, int endX, int endY)//起點到終點
+vector<vector<bool>> visited(ROW, vector<bool>(COL, false));//標記節點
+// 創建一個佇列queue<Node> q;
+// 將起點(q.push({startX, startY, 0});)加入佇列，並更新visited
+進入while迴圈(!q.empty())
+Node curr = q.front();// 取出佇列的頂部節點
+q.pop();
+// 如果到達出口，返回距離
+if (curr.x == endX && curr.y == endY) return curr.dist;
+for (int i = 0; i < 4; i++) { // 嘗試向四個方向移動
+    int newX = curr.x + dx[i];
+    int newY = curr.y + dy[i]; 
+// 用if檢查新位置是否有效，並更新visited
+q.push({newX, newY, curr.dist + 1}); //將新位置加入佇列
+// 如果無法找到出口，在while迴圈外return -1;
+
+BFS無向圖
+//1 step
+#define MAX_N (number)
+建立節點數、邊數、節點(node)
+建立鄰接矩陣 vector<int> adj[MAX_N] or int adj[MAX_N][MAX_N];
+(1)如果是點上有值：建立tempvalue儲存節點值
+(2)如果是邊上有值：建立統計距離的陣列 d[N]
+
+//2 step
+建置 BFS 函式(int n, int value[])
+內包含 bool visited[]={false}, queue<int>
+逐步推入node進入queue，並將visited[]設置為true(首先推入頂點，並將頂點d[n]=0，visit[n]=true)
+依題目建立條件(EX:條件點可到達幾個點，即建立一記錄點int count; 統計總距離，即int total d)
+
+//3 step(主迴圈)
+while(!queue.empty()){
+int v=queue.front();
+queue.pop();
+(1) 
+tempvalue += value[v]; // 將當前節點的值加到 tempvalue 中
+進入迴圈for (int i : adj[v])
+判別!visited[i] 若true則將 visited[i] = true
+q.push(i)
+(2)
+if(adj[v][i]==1 && !visit[i])
+d[i] = d[v]+(1); (若題目是有權重邊就不是+1) ***當要問最短距離，就輸出d[所求點]；
+將visited[i]設置為true
+Q.push(i);(將i設置為新頂點)
+//補充
+視情況於主迴圈加入題目所求目標的統計
+EX：輸出條件是有相連輸出距離，無則輸出NO
+只要有相連，d[i]都會有值
+
+//4 step
+在主迴圈當中輸入鄰接矩陣
+呼叫BFS(n)
+for (int i = 0; i < m; i++) {
+        int v, w;
+        cin >> v >> w;
+        adj[v].push_back(w); // 將邊加入相鄰串列
+        adj[w].push_back(v); // 若圖是無向圖，需將兩個方向都加入
+}
