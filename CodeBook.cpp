@@ -33,7 +33,37 @@ if (str1 == str2)
 5.使用 getline() 讀取一整行字串：
 getline(cin, str); // 讀取一整行字串，包括空白字元
 
-#5 Vector
+#5 stringstream
+1. int 轉換成 string
+stringstream ss;
+    string int_to_str;
+    int num = 12345;
+    ss << num;
+    ss >> int_to_str;
+    cout << int_to_str << endl;
+2. string 轉換成 int
+stringstream ss;
+    string int_to_str = "11804";
+    int num;
+    ss << int_to_str;
+    ss >> num;
+    cout << num << endl;
+3. 清除stringstream
+利用ss.str(""); ss.clear();
+4.利用stringstream進行基本輸出
+stringstream ss1("he");//output = he
+    stringstream ss2,ss3,ss4;
+    string str("max");
+    ss2.str("hello");//output = hello
+    ss3.str(str);//output = max
+    ss4 << "hey";//output = hey
+5. 分割stringstream
+stringstream ss1("my name    is max  ");//cout my
+    string str("");                      name 
+    while(ss1 >> str)                    is
+        cout << str << endl;             max    
+
+#6 Vector
 1. 創建和初始化
 #include <vector>
 vector<int> vec1;
