@@ -94,3 +94,35 @@ bool empty = vec.empty(); // empty為false// 獲取第一個元素
 int first = vec.front(); // first為1
 int last = vec.back(); // last為5
 sort(vec.begin(), vec.end());
+
+#7 struct
+1.傳遞struct作為函數參數
+Person person1;
+person1.name = "John";
+void printPerson(const Person& person) {
+    cout <<  person.name << endl; //John
+}
+
+2.初始化struct變數
+Person person2 = {"Alice", 25, 1.65}; // 使用初始化列表
+
+3.struct內使用函數
+struct Rectangle {
+    int width;
+    int height;
+    // 函數成員
+    int area() {
+        return width * height;
+    }
+};
+Rectangle rect = {5, 10};
+int area = rect.area(); // area 為 50
+
+///////////////////////////////////////////////////////////////////
+//Input
+ios_base::sync_with_stdio(0);
+cin.tie(0);
+
+
+
+
