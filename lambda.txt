@@ -1,0 +1,7 @@
+C++ 中的 lambda 函數是一種可以在程式中定義的匿名函數。其語法如下：
+[capture](parameters) -> return_type { body }
+
+lambda 函數 [](const pair<string, int>& a, const pair<string, int>& b) { return a.second > b.second; }:
+[]: 這是捕獲列表。這裡是空的，因為 lambda 函數不需要捕獲任何外部變數。
+(const pair<string, int>& a, const pair<string, int>& b): 這是 lambda 函數的參數。它接受兩個 const 參考，類型是 pair<string, int>。
+{ return a.second > b.second; }: 這是 lambda 函數的主體。它比較了兩個對象 a 和 b 的第二個元素（整數部分）。
