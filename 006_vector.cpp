@@ -29,3 +29,20 @@ int first = vec.front(); // first為1
 int last = vec.back(); // last為5
 sort(vec.begin(), vec.end());
 
+5. 二維陣列初始化
+一行就能完成初始化。唯一的問題是只能初始化同樣的數值，不能像下方的範例那樣分行設定、甚至細緻到分項設定。
+-vector<vector<int>> matrix(m, vector<int>(n, 1));
+resize() 是一個 vector 中用來重新設定特定尺寸的方法，我們也可以使用時一併設定初始值。
+-vector<vector<int>> matrix(m);
+for (int i=0; i<m; ++i) {
+    matrix[i].resize(n, i+1);
+}
+
+
+
+
+
+
+
+    
+
