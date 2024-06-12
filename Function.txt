@@ -9,3 +9,6 @@
 3.重製輸出格式
 cout.unsetf(ios::fixed);
 cout << setprecision(10);
+
+4.四捨五入(round)
+ad = round(after - before);
