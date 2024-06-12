@@ -1,3 +1,7 @@
 1.min_element
 //min_element 是 C++ 標準庫 <algorithm> 中的一個函式
 
+2.絕對值：
+(1)整數：int absValue = std::abs(x);
+(2)浮點數的絕對值：double absValue = fabs(y); //abs現在都通用
+(3)長整數的絕對值：long absValue = abs(z);
