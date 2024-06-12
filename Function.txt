@@ -5,3 +5,7 @@
 (1)整數：int absValue = std::abs(x);
 (2)浮點數的絕對值：double absValue = fabs(y); //abs現在都通用
 (3)長整數的絕對值：long absValue = abs(z);
+
+3.重製輸出格式
+cout.unsetf(ios::fixed);
+cout << setprecision(10);
